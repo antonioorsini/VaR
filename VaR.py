@@ -25,10 +25,10 @@ def VaR(Returns, Formula = 'Parametric Normal', Confidence_Interval = 0.95 , Per
     if removeNa==True: Returns = Returns[pd.notnull(Returns)]
     
     # Data need to be returns already, then here the interval for the sampling is set for No input
-    if Period_Interval == None: 
+    if (Series == True and Period_Interval == None):
+        Period_Interval = 100
+    elif Period_Interval == None: 
         Period_Interval = len(Returns)
-    if (Series == True) and (Period_Interval == None):
-        Period_Interval = 100 
     
     #==========================================================================
     #==========================================================================
